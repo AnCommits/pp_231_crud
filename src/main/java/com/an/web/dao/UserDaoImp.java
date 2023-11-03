@@ -7,8 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -50,10 +48,7 @@ public class UserDaoImp implements UserDao {
             // Для сравнения дат до н.э. в поле birthDate должно быть корректное значение даты.
             // Флаг eraBc нужен только для сохрания в MySQL дат до н.э.
             // Поэтому пересчитываем дату с учетом эры.
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(user.getBirthDate());
-            calendar.set(Calendar.ERA, user.isEraBc() ? GregorianCalendar.BC : GregorianCalendar.AD);
-            user.setBirthDate(calendar.getTime());
+            user.setEraBc(user.isEraBc());
         }
         return user;
     }

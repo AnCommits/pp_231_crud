@@ -23,9 +23,9 @@ public class Main {
                 birthDay1.getTime(), new Date());
 
         Calendar birthDay2 = new GregorianCalendar(287, Calendar.JANUARY, 1);
-        birthDay2.set(Calendar.ERA, GregorianCalendar.BC);
         User user2 = new User("Архимед", null, "archimedes@pigeon.org",
                 birthDay2.getTime(), new Date());
+        user2.setEraBc(true);
 
 
         Calendar birthDay3 = new GregorianCalendar(1452, Calendar.APRIL, 15);
@@ -42,10 +42,11 @@ public class Main {
         userService.addUser(user3);
 
         User user102 = userService.getUserById(2);
+        System.out.println(user2);
         user102.setLastName("Сиракузский");
         user102.setEmail("archimedes_siracusa@eureka.edu");
         userService.updateUser(user102);
-        User user202 = userService.getUserById(2);
+        User user202 = userService.getUserById(user102.getId());
         System.out.println(user202);
     }
 }

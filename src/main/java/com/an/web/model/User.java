@@ -100,6 +100,14 @@ public class User {
 
     public void setEraBc(boolean eraBc) {
         this.eraBc = eraBc;
+        // При сохранении даты в MySQL информация об эре теряется.
+        // Для сравнения дат до н.э. в поле birthDate должно быть корректное значение даты.
+        // Флаг eraBc нужен только для сохрания в MySQL дат до н.э.
+        // Поэтому пересчитываем birthDate с учетом эры.
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(getBirthDate());
+        calendar.set(Calendar.ERA, isEraBc() ? GregorianCalendar.BC : GregorianCalendar.AD);
+        setBirthDate(calendar.getTime());
     }
 
     public Date getRecordDateTime() {
