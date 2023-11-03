@@ -1,6 +1,6 @@
-package com.an.web.dao;
+package com.an.dao;
 
-import com.an.web.model.User;
+import com.an.model.User;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

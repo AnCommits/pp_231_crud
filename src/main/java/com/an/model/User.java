@@ -1,4 +1,4 @@
-package com.an.web.model;
+package com.an.model;
 
 import javax.persistence.*;
 import java.text.DateFormat;

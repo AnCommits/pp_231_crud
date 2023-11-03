@@ -1,4 +1,4 @@
-package com.an.web.config;
+package com.an.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +23,7 @@ import java.util.Properties;
 @Configuration
 @PropertySource("classpath:application.properties")
 @EnableTransactionManagement
-@ComponentScan(basePackages = "com.an.web")
+@ComponentScan(basePackages = "com.an")
 public class AppConfig {
 
     @Autowired
