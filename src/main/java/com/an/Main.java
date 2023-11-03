@@ -41,12 +41,14 @@ public class Main {
         userService.addUser(user2);
         userService.addUser(user3);
 
-        User user102 = userService.getUserById(2);
-        System.out.println(user2);
-        user102.setLastName("Сиракузский");
-        user102.setEmail("archimedes_siracusa@eureka.edu");
-        userService.updateUser(user102);
-        User user202 = userService.getUserById(user102.getId());
-        System.out.println(user202);
+//        User user102 = userService.getUserById(2);
+//        System.out.println(user2);
+//        user102.setLastName("Сиракузский");
+//        user102.setEmail("archimedes_siracusa@eureka.edu");
+//        userService.updateUser(user102);
+//        User user202 = userService.getUserById(user102.getId());
+//        System.out.println(user202);
+        userService.removeUserById(1);
+        userService.removeUserById(555);
     }
 }

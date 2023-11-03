@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.logging.Logger;
@@ -75,9 +76,18 @@ public class UserDaoImp implements UserDao {
 
     @Override
     public void removeUserById(long id) {
+        logger.info("id: " + id);
+        User user = entityManager.find(User.class, id);
+        if (user != null) {
+            entityManager.remove(user);
+        }
     }
 
     @Override
     public void removeAllUsers() {
+        logger.info("");
+        String sql = "truncate table users";
+        Query query = entityManager.createNativeQuery(sql);
+        query.executeUpdate();
     }
 }
